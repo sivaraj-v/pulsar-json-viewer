@@ -1,0 +1,46 @@
+{
+  "name": "pulsar-json-viewer",
+  "version": "2.0.3",
+  "description": "Accessible JSON tree Web Component built on @alenaksu/json-viewer with optional checkbox selection, high-contrast search, keyboard-safe result navigation, fullscreen, light and dark themes, and CDN-ready browser builds.",
+  "type": "commonjs",
+  "license": "MIT",
+  "keywords": [
+    "json",
+    "json-viewer",
+    "web-component",
+    "checkbox",
+    "accessibility"
+  ],
+  "dependencies": {
+    "@alenaksu/json-viewer": "2.1.2"
+  },
+  "scripts": {
+    "test": "node tests/model.test.js && node tests/static.test.js",
+    "build:css": "tailwindcss -i ./styles/tailwind.css -o ./dist/pulsar.css --minify",
+    "prepack": "node tests/static.test.js && node tests/model.test.js"
+  },
+  "main": "src/pulsar-json-viewer.js",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "CDN.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "RELEASE_CHECKLIST.md",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "devDependencies": {
+    "tailwindcss": "4.3.3",
+    "@tailwindcss/cli": "4.3.3"
+  },
+  "unpkg": "dist/pulsar-json-viewer.js",
+  "jsdelivr": "dist/pulsar-json-viewer.js",
+  "exports": {
+    ".": {
+      "default": "./dist/pulsar-json-viewer.js"
+    },
+    "./style.css": "./dist/pulsar-json-viewer.css",
+    "./selection-model": "./src/selection-model.js"
+  }
+}

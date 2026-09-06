@@ -1,0 +1,122 @@
+/*
+ * Pulsar keeps custom CSS narrow. Tailwind utilities own layout, spacing,
+ * sizing and responsive behavior. This file provides explicit light and dark
+ * design tokens plus the upstream @alenaksu/json-viewer shadow-tree variables.
+ */
+pulsar-json-viewer {
+  display: block;
+  color: #172033;
+  background: #ffffff;
+  color-scheme: light;
+}
+
+pulsar-json-viewer json-viewer {
+  --background-color: #ffffff;
+  --color: #172033;
+  --property-color: #075985;
+  --string-color: #08783d;
+  --number-color: #9a3412;
+  --boolean-color: #6d28d9;
+  --null-color: #7e2254;
+  --preview-color: #475569;
+  --highlight-color: #fff7ed;
+  --outline-color: #0369a1;
+  --font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-size: 0.95rem;
+  --line-height: 1.55rem;
+  --indent-size: 0.8rem;
+}
+
+pulsar-json-viewer.pulsar-theme-dark {
+  color: #e5edf8;
+  background: #0b1220;
+  color-scheme: dark;
+}
+
+pulsar-json-viewer.pulsar-theme-dark json-viewer {
+  --background-color: #0b1220;
+  --color: #e5edf8;
+  --property-color: #7dd3fc;
+  --string-color: #86efac;
+  --number-color: #fdba74;
+  --boolean-color: #c4b5fd;
+  --null-color: #f9a8d4;
+  --preview-color: #cbd5e1;
+  --highlight-color: #422006;
+  --outline-color: #38bdf8;
+}
+
+pulsar-json-viewer .pulsar-surface-dark {
+  border-color: #334155;
+  background: rgb(15 23 42 / 0.96);
+}
+
+pulsar-json-viewer .pulsar-canvas-dark {
+  border-color: #334155;
+  background: #0b1220;
+}
+
+pulsar-json-viewer .pulsar-group-dark {
+  border-color: #475569;
+  background: #111827;
+}
+
+pulsar-json-viewer .pulsar-button-dark {
+  background: #111827;
+  color: #e5edf8;
+}
+
+pulsar-json-viewer .pulsar-button-dark:hover:not(:disabled) {
+  border-color: #64748b;
+  background: #1e293b;
+  color: #ffffff;
+}
+
+pulsar-json-viewer .pulsar-button-dark:active:not(:disabled) {
+  background: #334155;
+}
+
+pulsar-json-viewer .pulsar-button-dark:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+pulsar-json-viewer .pulsar-button-dark:disabled {
+  background: transparent;
+  color: #94a3b8;
+}
+
+pulsar-json-viewer .pulsar-input-dark {
+  border-color: #64748b;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+pulsar-json-viewer .pulsar-input-dark::placeholder {
+  color: #94a3b8;
+}
+
+pulsar-json-viewer .pulsar-input-dark:focus {
+  border-color: #38bdf8;
+  outline: 2px solid rgb(56 189 248 / 0.4);
+  outline-offset: 1px;
+}
+
+pulsar-json-viewer:fullscreen {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+pulsar-json-viewer:fullscreen .pulsar-json-toolbar {
+  top: 0;
+}
+
+pulsar-json-viewer:fullscreen .pulsar-json-canvas {
+  height: calc(100vh - 5rem);
+  max-height: none;
+}
+
+/* Search highlight backgrounds are chosen to preserve >= 5:1 contrast with all syntax tokens in light mode and >= 7.8:1 in dark mode. */
