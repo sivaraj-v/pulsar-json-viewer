@@ -351,11 +351,11 @@
       this.replaceChildren()
 
       const toolbar = document.createElement("div")
-      toolbar.className = "pulsar-json-toolbar sticky top-0 z-20 flex flex-wrap items-center gap-2 rounded-t-xl border border-slate-300 bg-slate-50/95 p-2 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-slate-50/90"
+      toolbar.className = "pulsar-json-toolbar jsonview:sticky jsonview:top-0 jsonview:z-20 jsonview:flex jsonview:flex-wrap jsonview:items-center jsonview:gap-2 jsonview:rounded-t-xl jsonview:border jsonview:border-slate-300 jsonview:bg-slate-50/95 jsonview:p-2 jsonview:shadow-sm jsonview:backdrop-blur jsonview:supports-[backdrop-filter]:bg-slate-50/90"
       toolbar.setAttribute("role", "toolbar")
       toolbar.setAttribute("aria-label", "JSON tree actions")
 
-      const iconButtonClass = "inline-flex size-8 shrink-0 items-center justify-center rounded-md border border-transparent bg-white text-slate-700 transition hover:border-slate-300 hover:bg-slate-100 hover:text-slate-950 active:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-700 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:bg-transparent disabled:text-slate-400 disabled:opacity-60"
+      const iconButtonClass = "jsonview:inline-flex jsonview:size-8 jsonview:shrink-0 jsonview:items-center jsonview:justify-center jsonview:rounded-md jsonview:border jsonview:border-transparent jsonview:bg-white jsonview:text-slate-700 jsonview:transition jsonview:hover:border-slate-300 jsonview:hover:bg-slate-100 jsonview:hover:text-slate-950 jsonview:active:bg-slate-200 jsonview:focus-visible:outline-none jsonview:focus-visible:ring-2 jsonview:focus-visible:ring-sky-700 jsonview:focus-visible:ring-offset-1 jsonview:disabled:cursor-not-allowed jsonview:disabled:bg-transparent jsonview:disabled:text-slate-400 jsonview:disabled:opacity-60"
       const makeIconButton = (label, action) => {
         const button = document.createElement("button")
         button.type = "button"
@@ -365,7 +365,7 @@
         return button
       }
 
-      const groupClass = "pulsar-json-action-group inline-flex w-fit shrink-0 items-center gap-0.5 rounded-lg border border-slate-200 bg-white p-0.5 shadow-sm"
+      const groupClass = "pulsar-json-action-group jsonview:inline-flex jsonview:w-fit jsonview:shrink-0 jsonview:items-center jsonview:gap-0.5 jsonview:rounded-lg jsonview:border jsonview:border-slate-200 jsonview:bg-white jsonview:p-0.5 jsonview:shadow-sm"
 
       const treeActions = document.createElement("div")
       treeActions.className = groupClass
@@ -388,17 +388,17 @@
       )
 
       const search = document.createElement("div")
-      search.className = "pulsar-json-search ml-auto flex min-w-0 flex-1 basis-full items-center justify-end gap-1 md:basis-[28rem]"
+      search.className = "pulsar-json-search jsonview:ml-auto jsonview:flex jsonview:min-w-0 jsonview:flex-1 jsonview:basis-full jsonview:items-center jsonview:justify-end jsonview:gap-1 jsonview:md:basis-[28rem]"
       search.setAttribute("role", "search")
       const searchId = this.#id("search")
       const searchLabel = document.createElement("label")
-      searchLabel.className = "sr-only"
+      searchLabel.className = "jsonview:sr-only"
       searchLabel.htmlFor = searchId
       searchLabel.textContent = "Search JSON"
       const searchHelp = document.createElement("span")
       const searchHelpId = this.#id("search-help")
       searchHelp.id = searchHelpId
-      searchHelp.className = "sr-only"
+      searchHelp.className = "jsonview:sr-only"
       searchHelp.textContent = "Type to search. Press Enter for the next result and Shift plus Enter for the previous result."
       const searchInput = document.createElement("input")
       searchInput.id = searchId
@@ -408,9 +408,9 @@
       searchInput.autocomplete = "off"
       searchInput.spellcheck = false
       searchInput.setAttribute("aria-describedby", searchHelpId)
-      searchInput.className = "h-8 min-w-[10rem] flex-1 rounded-md border border-slate-400 bg-white px-3 text-sm text-slate-950 shadow-sm placeholder:text-slate-500 hover:border-slate-500 focus:border-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-700/25"
+      searchInput.className = "jsonview:h-8 jsonview:min-w-[10rem] jsonview:flex-1 jsonview:rounded-md jsonview:border jsonview:border-slate-400 jsonview:bg-white jsonview:px-3 jsonview:text-sm jsonview:text-slate-950 jsonview:shadow-sm jsonview:placeholder:text-slate-500 jsonview:hover:border-slate-500 jsonview:focus:border-sky-700 jsonview:focus:outline-none jsonview:focus:ring-2 jsonview:focus:ring-sky-700/25"
       const counter = document.createElement("span")
-      counter.className = "pulsar-json-search-counter min-w-12 text-center text-xs font-medium text-slate-600"
+      counter.className = "pulsar-json-search-counter jsonview:min-w-12 jsonview:text-center jsonview:text-xs jsonview:font-medium jsonview:text-slate-600"
       counter.setAttribute("aria-hidden", "true")
       counter.textContent = "0 / 0"
       search.append(
@@ -426,10 +426,10 @@
       toolbar.append(treeActions, selectionActions, search)
 
       const canvas = document.createElement("div")
-      canvas.className = "pulsar-json-canvas min-h-40 overflow-auto rounded-b-xl border border-t-0 border-slate-300 bg-white px-3 py-4 sm:px-4"
+      canvas.className = "pulsar-json-canvas jsonview:min-h-40 jsonview:overflow-auto jsonview:rounded-b-xl jsonview:border jsonview:border-t-0 jsonview:border-slate-300 jsonview:bg-white jsonview:px-3 jsonview:py-4 jsonview:sm:px-4"
 
       const status = document.createElement("span")
-      status.className = "sr-only"
+      status.className = "jsonview:sr-only"
       status.setAttribute("aria-live", "polite")
       status.setAttribute("aria-atomic", "true")
 
@@ -451,7 +451,7 @@
       button.title = label
       button.replaceChildren(createIcon(action))
       const hidden = document.createElement("span")
-      hidden.className = "sr-only"
+      hidden.className = "jsonview:sr-only"
       hidden.textContent = label
       button.appendChild(hidden)
     }
@@ -511,7 +511,7 @@
     #renderUnavailable(message) {
       this.replaceChildren()
       const state = document.createElement("p")
-      state.className = "m-0 rounded-xl border border-slate-300 bg-slate-50 p-4 text-slate-700"
+      state.className = "jsonview:m-0 jsonview:rounded-xl jsonview:border jsonview:border-slate-300 jsonview:bg-slate-50 jsonview:p-4 jsonview:text-slate-700"
       state.textContent = message
       this.appendChild(state)
     }

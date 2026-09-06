@@ -16,8 +16,8 @@
   },
   "scripts": {
     "test": "node tests/model.test.js && node tests/static.test.js",
-    "build:css": "tailwindcss -i ./styles/tailwind.css -o ./dist/pulsar.css --minify",
-    "build:dist": "mkdir -p dist docs/examples/dist && cp src/pulsar-json-viewer.js dist/pulsar-json-viewer.js && cp src/pulsar-json-viewer.css dist/pulsar-json-viewer.css && cp src/pulsar-json-viewer.js docs/examples/dist/pulsar-json-viewer.js && cp src/pulsar-json-viewer.css docs/examples/dist/pulsar-json-viewer.css && cp src/selection-model.js docs/examples/dist/selection-model.js && cp node_modules/@alenaksu/json-viewer/dist/json-viewer.bundle.js docs/examples/dist/json-viewer.bundle.js && yarn build:css && cp dist/pulsar.css docs/examples/dist/pulsar.css",
+    "build:css": "tailwindcss -i ./styles/tailwind.css -o ./dist/pulsar.css --minify && tailwindcss -i ./styles/pulsar-json-viewer.css -o ./dist/pulsar-json-viewer.css --minify",
+    "build:dist": "mkdir -p dist docs/examples/dist && cp src/pulsar-json-viewer.js dist/pulsar-json-viewer.js && cp src/pulsar-json-viewer.js docs/examples/dist/pulsar-json-viewer.js && cp src/selection-model.js docs/examples/dist/selection-model.js && cp node_modules/@alenaksu/json-viewer/dist/json-viewer.bundle.js docs/examples/dist/json-viewer.bundle.js && yarn build:css && cp dist/pulsar.css docs/examples/dist/pulsar.css && cp dist/pulsar-json-viewer.css docs/examples/dist/pulsar-json-viewer.css",
     "prepack": "node tests/static.test.js && node tests/model.test.js"
   },
   "main": "src/pulsar-json-viewer.js",

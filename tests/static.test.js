@@ -58,9 +58,9 @@ for (const upstreamMethod of ["expandAll", "collapseAll", ".search(", "resetFilt
 }
 
 for (const required of [
-  "size-8",
-  "sticky top-0 z-20",
-  "basis-full",
+  "jsonview:size-8",
+  "jsonview:sticky jsonview:top-0 jsonview:z-20",
+  "jsonview:basis-full",
   "display: inline-flex",
   "align-items: center",
   "vertical-align: middle"
