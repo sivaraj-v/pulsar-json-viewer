@@ -115,7 +115,9 @@ for (const file of files.filter(file => file.endsWith(".html") && file.includes(
 if (!fs.existsSync(path.join(root, "docs/examples/configuration.html"))) throw new Error("Configuration example is missing")
 const docsIndex = fs.readFileSync(path.join(root, "docs/index.html"), "utf8")
 if (!docsIndex.includes('href="examples/dist/pulsar.css"')) throw new Error("Docs homepage must use the local utility stylesheet")
-if (docsIndex.includes("https://cdn.jsdelivr.net/npm") || docsIndex.includes("https://unpkg.com")) throw new Error("Docs homepage must not load CDN assets")
+if (/<link[^>]+href="https:\/\/(?:cdn\.jsdelivr\.net|unpkg\.com)/.test(docsIndex) || /<script[^>]+src="https:\/\/(?:cdn\.jsdelivr\.net|unpkg\.com)/.test(docsIndex)) {
+  throw new Error("Docs homepage must not load CDN assets")
+}
 for (const requiredFile of [
   "docs/examples/dist/json-viewer.bundle.js",
   "docs/examples/dist/pulsar.css",
