@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --non-interactive
+
+      - name: Verify tag version
+        run: test "v$(node -p "require('./package.json').version")" = "$GITHUB_REF_NAME"
+
+      - name: Build distribution files
+        run: yarn build:dist
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Create release bundles
+        shell: bash
+        run: |
+          mkdir -p release/site
+          cp -R docs/. release/site/
+          touch release/site/.nojekyll
+          npm pack --pack-destination release
+          mv release/pulsar-json-viewer-*.tgz "release/pulsar-json-viewer-${GITHUB_REF_NAME}.tgz"
+          (
+            cd release/site
+            zip -qr "../pulsar-json-viewer-${GITHUB_REF_NAME}-site.zip" .
+          )
+          git archive --format=zip --prefix="pulsar-json-viewer-${GITHUB_REF_NAME}/" -o "release/pulsar-json-viewer-${GITHUB_REF_NAME}-source.zip" HEAD
+          rm -rf release/site
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" release/* --title "Pulsar JSON Viewer $GITHUB_REF_NAME" --generate-notes

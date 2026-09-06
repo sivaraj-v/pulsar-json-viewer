@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pulsar JSON Viewer documentation, capabilities, comparisons and interactive examples.">
+  <link rel="canonical" href="https://sivaraj-v.github.io/pulsar-json-viewer/">
+  <title>Pulsar JSON Viewer | Documentation</title>
+  <link rel="stylesheet" href="examples/dist/pulsar.css">
+</head>
+<body class="m-0 bg-[#f5f7f2] text-slate-950 antialiased">
+  <header class="border-b border-slate-200 bg-[#102a2a] text-white">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
+      <a class="font-mono text-sm font-bold tracking-wide text-emerald-300 no-underline" href="index.html">PULSAR / JSON VIEWER</a>
+      <div class="flex items-center gap-5 text-sm font-semibold text-slate-200">
+        <a class="no-underline hover:text-emerald-300" href="examples/">Examples</a>
+        <a class="no-underline hover:text-emerald-300" href="https://github.com/sivaraj-v/pulsar-json-viewer#readme">README</a>
+      </div>
+    </nav>
+    <div class="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-12 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pb-24 lg:pt-20">
+      <div>
+        <p class="font-mono text-xs font-bold uppercase tracking-[0.22em] text-emerald-300">Accessible JSON inspection</p>
+        <h1 class="mt-4 max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">Make complex JSON feel workable.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">Pulsar JSON Viewer is a production-ready Web Component for dashboards, support consoles, developer tools and documentation. Browse, search, select and export the exact data you need.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="inline-flex items-center rounded-lg bg-emerald-300 px-5 py-3 text-sm font-bold text-[#102a2a] no-underline transition hover:bg-emerald-200" href="examples/">Explore interactive examples <span class="ml-2" aria-hidden="true">-&gt;</span></a>
+            <a class="inline-flex items-center rounded-lg border border-slate-600 px-5 py-3 text-sm font-bold text-white no-underline transition hover:border-emerald-300 hover:text-emerald-300" href="https://github.com/sivaraj-v/pulsar-json-viewer#readme">Read the API docs</a>
+        </div>
+      </div>
+      <div class="overflow-hidden rounded-2xl border border-white/10 bg-[#193c3a] shadow-2xl">
+        <img class="block h-auto w-full object-contain" src="social/pulsar-overview-medium.png" alt="Pulsar JSON Viewer overview">
+        <div class="flex items-center justify-between px-5 py-4 text-xs text-slate-300"><span class="font-mono">SELECT / SEARCH / EXPORT</span><span class="text-emerald-300">v2.0.3</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
+      <div class="max-w-3xl">
+        <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-teal-700">Objective</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">A focused layer around a proven tree viewer.</h2>
+        <p class="mt-5 text-lg leading-8 text-slate-600">Pulsar keeps the upstream renderer in charge of tree rendering, expansion and keyboard navigation. It adds the workflow teams need when JSON is part of an investigation: accessible selection, fast search, useful exports, fullscreen workspaces and clear themes.</p>
+      </div>
+      <div class="mt-12 grid gap-8 border-y border-slate-300 py-10 sm:grid-cols-3">
+        <div><p class="font-mono text-3xl font-bold text-teal-800">01</p><h3 class="mt-4 text-lg font-bold">Inspect</h3><p class="mt-2 leading-7 text-slate-600">Keep large payloads readable with native tree behavior and a sticky action toolbar.</p></div>
+        <div><p class="font-mono text-3xl font-bold text-teal-800">02</p><h3 class="mt-4 text-lg font-bold">Focus</h3><p class="mt-2 leading-7 text-slate-600">Search keys and values, select nested leaves, and preserve the structure around them.</p></div>
+        <div><p class="font-mono text-3xl font-bold text-teal-800">03</p><h3 class="mt-4 text-lg font-bold">Share</h3><p class="mt-2 leading-7 text-slate-600">Copy or download the whole payload or only the subset relevant to the task.</p></div>
+      </div>
+    </section>
+
+    <section class="border-y border-slate-200 bg-white">
+      <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+        <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div><p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-teal-700">Capability map</p><h2 class="mt-3 text-3xl font-bold tracking-tight">What belongs where?</h2></div>
+          <p class="max-w-md text-sm leading-6 text-slate-500">The boundary is deliberate: Pulsar adds productivity without replacing the upstream tree interaction model.</p>
+        </div>
+        <div class="mt-10 overflow-x-auto border-y border-slate-300">
+          <table class="w-full min-w-[680px] border-collapse text-left text-sm">
+            <caption class="sr-only">Comparison of upstream JSON viewer capabilities and Pulsar additions</caption>
+            <thead><tr class="border-b border-slate-300 text-xs uppercase tracking-[0.12em] text-slate-500"><th class="px-4 py-4 font-bold">Capability</th><th class="px-4 py-4 font-bold">Upstream viewer</th><th class="px-4 py-4 font-bold text-teal-800">Pulsar layer</th></tr></thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr><td class="px-4 py-4 font-semibold">JSON rendering and tree structure</td><td class="px-4 py-4 text-slate-600">Owns</td><td class="px-4 py-4 text-slate-600">Uses upstream</td></tr>
+              <tr><td class="px-4 py-4 font-semibold">Expand, collapse and arrow navigation</td><td class="px-4 py-4 text-slate-600">Owns</td><td class="px-4 py-4 text-slate-600">Preserves</td></tr>
+              <tr><td class="px-4 py-4 font-semibold">Checkbox selection and mixed states</td><td class="px-4 py-4 text-slate-600">-</td><td class="px-4 py-4 font-semibold text-teal-800">Adds</td></tr>
+              <tr><td class="px-4 py-4 font-semibold">Search controls and result navigation</td><td class="px-4 py-4 text-slate-600">Search iterator</td><td class="px-4 py-4 font-semibold text-teal-800">Adds input, counter and controls</td></tr>
+              <tr><td class="px-4 py-4 font-semibold">Copy, download and fullscreen workflow</td><td class="px-4 py-4 text-slate-600">-</td><td class="px-4 py-4 font-semibold text-teal-800">Adds</td></tr>
+              <tr><td class="px-4 py-4 font-semibold">Light and dark dashboard themes</td><td class="px-4 py-4 text-slate-600">Base renderer</td><td class="px-4 py-4 font-semibold text-teal-800">Configures</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-teal-700">Try the workflows</p><h2 class="mt-3 text-3xl font-bold tracking-tight">Interactive examples</h2></div><a class="text-sm font-bold text-teal-800 no-underline hover:text-teal-600" href="examples/">View all examples -&gt;</a></div>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a class="border border-slate-300 bg-white p-6 no-underline transition hover:-translate-y-1 hover:border-teal-500 hover:shadow-lg" href="examples/basic.html"><p class="font-mono text-xs text-teal-700">START HERE</p><h3 class="mt-3 text-xl font-bold text-slate-950">Basic viewer</h3><p class="mt-2 leading-7 text-slate-600">A compact API response with the complete toolbar.</p></a>
+        <a class="border border-slate-300 bg-white p-6 no-underline transition hover:-translate-y-1 hover:border-teal-500 hover:shadow-lg" href="examples/selection.html"><p class="font-mono text-xs text-teal-700">SELECT</p><h3 class="mt-3 text-xl font-bold text-slate-950">Nested selection</h3><p class="mt-2 leading-7 text-slate-600">Explore leaf, branch and mixed parent states.</p></a>
+        <a class="border border-slate-300 bg-white p-6 no-underline transition hover:-translate-y-1 hover:border-teal-500 hover:shadow-lg" href="examples/large-professional.html"><p class="font-mono text-xs text-teal-700">STRESS TEST</p><h3 class="mt-3 text-xl font-bold text-slate-950">Large payload</h3><p class="mt-2 leading-7 text-slate-600">Work through services, incidents and audit records.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-[#102a2a] px-5 py-8 text-sm text-slate-300 sm:px-8"><div class="mx-auto flex max-w-7xl flex-col justify-between gap-3 sm:flex-row"><span class="font-mono text-emerald-300">PULSAR JSON VIEWER</span><span>Accessible inspection for structured data.</span></div></footer>
+</body>
+</html>

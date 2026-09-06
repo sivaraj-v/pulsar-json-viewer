@@ -1,11 +1,25 @@
 # Release checklist
 
-1. Run `npm test` from the repository root.
-2. Run `npm test` inside `packages/pulsar-json-viewer`.
-3. Confirm `dist/pulsar-json-viewer.js` and `dist/pulsar-json-viewer.css` are generated from the release source.
-4. Run `npm pack --dry-run` in the Pulsar package and review the published file list.
-5. Publish the exact semver version to npm.
-6. Verify the version-pinned jsDelivr and UNPKG URLs resolve to the published bytes.
-7. Compute SRI hashes from the exact CDN responses and add them to the deployment documentation used by the consuming application.
-8. Smoke test light and dark themes, checkbox on and off modes, keyboard-only search, pointer search, copy, download, fullscreen, and a large JSON payload.
-9. Keep `@alenaksu/json-viewer` pinned to the tested upstream version until a newer version is explicitly validated.
+## Before tagging
+
+1. Update `version` in `package.json` and the matching entry in `CHANGELOG.md`.
+2. Keep `@alenaksu/json-viewer` pinned to the tested upstream version.
+3. Run `yarn build:dist`.
+4. Run `yarn test`.
+5. Smoke test the Pages site and the local `docs/examples/` demos in light and dark themes, checkbox modes, search, copy, download, fullscreen, and large-payload workflows.
+6. Confirm the Pages site uses only repository-hosted assets and is available at `https://sivaraj-v.github.io/pulsar-json-viewer/`.
+
+## Publish
+
+1. Commit the version and changelog updates.
+2. Create and push an annotated tag, for example `git tag -a v2.0.4 -m "Release v2.0.4"` followed by `git push origin v2.0.4`.
+3. The `Release` GitHub Actions workflow creates the GitHub Release and attaches the site ZIP, source ZIP, and npm package tarball.
+4. Review the generated release assets and release notes before announcing the release.
+
+## Downloadable assets
+
+Each GitHub Release contains:
+
+- `pulsar-json-viewer-vX.Y.Z-site.zip`: the self-contained Pages site.
+- `pulsar-json-viewer-vX.Y.Z-source.zip`: the repository source snapshot.
+- `pulsar-json-viewer-vX.Y.Z.tgz`: the npm package bundle.

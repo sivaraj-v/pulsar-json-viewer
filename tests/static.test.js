@@ -107,16 +107,28 @@ if (packageJson.devDependencies?.tailwindcss !== "4.3.3" || packageJson.devDepen
 
 for (const file of files.filter(file => file.endsWith(".html") && file.includes(`${path.sep}examples${path.sep}`))) {
   const text = fs.readFileSync(file, "utf8")
-  if (!text.includes("https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3")) {
-    throw new Error(`Example must pin Tailwind browser 4.3.3: ${path.relative(root, file)}`)
+  if (!text.includes('href="dist/pulsar.css"')) {
+    throw new Error(`Example must use the local utility stylesheet: ${path.relative(root, file)}`)
   }
 }
 
-if (!fs.existsSync(path.join(root, "examples/configuration.html"))) throw new Error("Configuration example is missing")
+if (!fs.existsSync(path.join(root, "docs/examples/configuration.html"))) throw new Error("Configuration example is missing")
+const docsIndex = fs.readFileSync(path.join(root, "docs/index.html"), "utf8")
+if (!docsIndex.includes('href="examples/dist/pulsar.css"')) throw new Error("Docs homepage must use the local utility stylesheet")
+if (docsIndex.includes("https://cdn.jsdelivr.net/npm") || docsIndex.includes("https://unpkg.com")) throw new Error("Docs homepage must not load CDN assets")
+for (const requiredFile of [
+  "docs/examples/dist/json-viewer.bundle.js",
+  "docs/examples/dist/pulsar.css",
+  "docs/examples/dist/pulsar-json-viewer.js",
+  "docs/examples/dist/pulsar-json-viewer.css",
+  "docs/examples/dist/selection-model.js"
+]) {
+  if (!fs.existsSync(path.join(root, requiredFile))) throw new Error(`Example runtime file missing: ${requiredFile}`)
+}
 
 console.log("static tests passed")
 
-for (const requiredFile of ["dist/pulsar-json-viewer.js", "dist/pulsar-json-viewer.css", "CDN.md", "CHANGELOG.md", "examples/api-response.html", "examples/feature-flags.html", "examples/ecommerce-order.html"]) {
+for (const requiredFile of ["dist/pulsar-json-viewer.js", "dist/pulsar-json-viewer.css", "CDN.md", "CHANGELOG.md", "docs/index.html", "docs/examples/api-response.html", "docs/examples/feature-flags.html", "docs/examples/ecommerce-order.html"]) {
   if (!fs.existsSync(path.join(root, requiredFile))) throw new Error(`Release file missing: ${requiredFile}`)
 }
 if (packageJson.unpkg !== "dist/pulsar-json-viewer.js" || packageJson.jsdelivr !== "dist/pulsar-json-viewer.js") throw new Error("CDN entry points are missing")

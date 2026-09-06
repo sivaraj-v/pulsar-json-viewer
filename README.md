@@ -200,7 +200,11 @@ The examples are designed to be usable with keyboard-only navigation and at high
 
 ## Examples
 
-Open `examples/index.html` from a local static server.
+Open `docs/index.html` from a local static server.
+
+The hosted documentation is deployed through [GitHub Pages](https://sivaraj-v.github.io/pulsar-json-viewer/). In the repository's **Settings → Pages**, select **GitHub Actions** as the build and deployment source, then push to `master` or run the `Deploy Pages` workflow manually.
+
+Tagged releases are published through GitHub Releases. See [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) for the tag process and downloadable site, source, and npm bundle assets.
 
 - `basic.html` shows the smallest useful setup
 - `selection.html` focuses on nested checkbox selection and the selection event
@@ -219,12 +223,14 @@ A simple local server is enough:
 python3 -m http.server 8080
 ```
 
-Then open `http://localhost:8080/examples/`.
+Then open `http://localhost:8080/docs/`.
+
+For compatibility with the previous layout, `http://localhost:8080/examples/` also resolves to the same demos. The examples use the local runtime files under `docs/examples/dist/`; the upstream viewer is not loaded from a CDN.
 
 
 ## Light and dark theme showcase
 
-A dedicated theme example is available at `examples/themes.html`. It renders the same production-style payload in light and dark mode side by side so teams can evaluate syntax colors, search highlights, checkbox states, focus treatment, and toolbar contrast without switching a single preview back and forth.
+A dedicated theme example is available at `docs/examples/themes.html`. It renders the same production-style payload in light and dark mode side by side so teams can evaluate syntax colors, search highlights, checkbox states, focus treatment, and toolbar contrast without switching a single preview back and forth.
 
 `configuration.html` remains the interactive configuration example for changing `theme` and `checkboxes` at runtime.
 
@@ -242,17 +248,18 @@ pulsar-json-viewer/
     pulsar-json-viewer.js
     pulsar-json-viewer.css
     selection-model.js
-  examples/
+  docs/
     index.html
-    basic.html
-    selection.html
-    search.html
-    arrays.html
-    configuration.html
-    large-professional.html
-    example.css
-    data/
-      large-professional.js
+    examples/
+      basic.html
+      selection.html
+      search.html
+      arrays.html
+      configuration.html
+      large-professional.html
+      example.css
+      data/
+        large-professional.js
   tests/
     model.test.js
     static.test.js

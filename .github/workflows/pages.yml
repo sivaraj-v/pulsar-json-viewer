@@ -26,16 +26,13 @@ jobs:
 
       - name: Prepare static site
         run: |
-          mkdir -p site/examples site/src
-          cp -R examples/. site/examples/
+          mkdir -p site/src
+          cp -R docs/. site/
           cp -R src/. site/src/
           touch site/.nojekyll
-          printf '%s\n' '<!doctype html><meta http-equiv="refresh" content="0; url=examples/">' > site/index.html
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
